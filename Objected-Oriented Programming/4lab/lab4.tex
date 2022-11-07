@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{multicol,multirow}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{minted}
+\usepackage{color} %% это для отображения цвета в коде
+\usepackage{listings} %% собственно, это и есть пакет listings
+\lstset{ %
+language=C++,                 % выбор языка для подсветки (здесь это С++)
+basicstyle=\small\sffamily, % размер и начертание шрифта для подсветки кода
+numbers=left,               % где поставить нумерацию строк (слева\справа)
+%numberstyle=\tiny,           % размер шрифта для номеров строк
+stepnumber=1,                   % размер шага между двумя номерами строк
+numbersep=5pt,                % как далеко отстоят номера строк от подсвечиваемого кода
+backgroundcolor=\color{white}, % цвет фона подсветки - используем \usepackage{color}
+showspaces=false,            % показывать или нет пробелы специальными отступами
+showstringspaces=false,      % показывать или нет пробелы в строках
+showtabs=false,             % показывать или нет табуляцию в строках
+frame=single,              % рисовать рамку вокруг кода
+tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
+captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+breaklines=true,           % автоматически переносить строки (да\нет)
+breakatwhitespace=false, % переносить строки только если есть пробел
+escapeinside={\%*}{*)}   % если нужно добавить комментарии в коде
+}
+
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСКОЙ ФЕДЕРАЦИИ
+\medskip
+МОСКОВСКИЙ АВИАЦИОННЫЙ ИНСТИТУТ
+(НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСТИТЕТ)
+\vfill\vfill
+{\Huge ЛАБОРАТОРНАЯ РАБОТА №4} \\
+по курсу объектно-ориентированное программирование
+I семестр, 2021/22 уч. год}
+\end{center}
+\vfill
+
+Студент \uline{\it {Шандрюк Пётр Николаевич, группа М8О-208Б-20}\hfill}
+
+Преподаватель \uline{\it {Дорохов Евгений Павлович}\hfill}
+
+\vfill
+\end{titlepage}
+
+\subsection*{Условие}
+
+Задание: \
+Вариант 25: Прямоугольник, очередь.\
+Необходимо спроектировать и запрограммировать на языке C++ шаблон класса-контейнера
+первого уровня, содержащий одну фигуру, согласно вариантам задания.
+Классы должны удовлетворять следующим правилам:
+\begin{itemize}
+	\item Требования к классу фигуры аналогичны требованиям из лабораторной работы №1;
+	\item Требования к классу контейнера аналогичны требованиям из лабораторной работы №2;
+	\item Шаблон класса-контейнера должен содержать объекты используя std::shared \_ ptr<...>
+\end{itemize}
+
+
+\subsection*{Описание программы}
+
+Исходный код лежит в 9 файлах:
+\begin{enumerate}
+\item main.cpp: основная программа, взаимодействие с пользователем посредством комманд из меню
+
+\item tqueueitem.h:    описание класса предмета очереди
+\item point.h:     описание класса точки
+\item tqueue.h:  описание класса очереди
+\item triangle.h: описание класса треугольника, наследующегося от figures
+\item point.cpp:     реализация класса точки
+\item tqueue.inl:  реализация класса очереди
+\item triangle.cpp: реализация класса треугольника
+\item tqueueitem.inl:    реализация класса предмета очереди
+
+\end{enumerate}
+
+\subsection*{Дневник отладки}
+
+\begin{left}
+
+\textbf{Пример работы программы: }
+
+\textbf{peter1811@DESKTOP-V53N291:}  CMakeLists.txt
+    
+\textbf{peter1811@DESKTOP-V53N291:} make
+    
+\textbf{peter1811@DESKTOP-V53N291:} ./2\_lab
+
+Triangle with vertices (0, 0), (0, 1), (1, 1) was created
+
+Queue item: created
+
+{Triangle: (0, 0), (0, 1), (1, 1)}
+
+Triangle was deleted
+
+Triangle with vertices (0, 0), (0, 1), (1, 1) was created
+
+Queue item: created
+
+Default triangle is created
+
+Queue item: created
+
+{Triangle: (0, 0), (0, 1), (1, 1)}
+
+{Triangle: (0, 0), (0, 0), (0, 0)}
+
+Triangle was deleted
+
+Triangle was deleted
+
+\end{left}
+
+\subsection*{Недочёты}
+
+
+\subsection*{Выводы}
+
+Я познакомился с шаблонами классов и применил их в построении динамических структур данных.
+
+
+\vfill
+
+\subsection*{Исходный код}
+
+{\Huge tqueue.h}
+\inputminted{C++}{tqueue.h}
+    \pagebreak
+
+{\Huge tqueue.inl}
+\inputminted{C++}{tqueue.inl}
+\pagebreak
+
+{\Huge tqueueitem.h}
+\inputminted{C++}{tqueueitem.h}
+\pagebreak
+
+{\Huge tqueueitem.inl}
+\inputminted{C++}{tqueueitem.inl}
+\pagebreak
+    
+{\Huge point.h}
+\inputminted{C++}{point.h}
+    \pagebreak
+
+{\Huge point.cpp}
+\inputminted{C++}{point.cpp}
+    \pagebreak
+
+{\Huge triangle.h}
+\inputminted{C++}{triangle.h}
+\pagebreak
+
+{\Huge triangle.cpp}
+\inputminted{C++}{triangle.cpp}
+\pagebreak
+    
+{\Huge main.cpp}
+\inputminted{C++}{main.cpp}
+    \pagebreak
+    
+\end{document}
